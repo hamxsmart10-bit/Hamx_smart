@@ -1,1 +1,1 @@
-"""Cœur du système de trading"""
+"""Core - Cœur du système de trading"""

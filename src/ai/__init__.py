@@ -1,1 +1,1 @@
-"""Modèles d'IA et prédictions"""
+"""AI - Modèles d'IA et prédictions"""

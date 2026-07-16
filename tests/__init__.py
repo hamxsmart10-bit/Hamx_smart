@@ -1,1 +1,1 @@
-"""Tests du système"""
+"""Tests"""

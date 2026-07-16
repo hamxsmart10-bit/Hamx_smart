@@ -1,1 +1,1 @@
-"""Utilitaires du système"""
+"""Utilitaires"""

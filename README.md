@@ -4,12 +4,9 @@
 
 ## 📋 Table des matières
 - [À propos](#à-propos)
-- [Fonctionnalités](#fonctionnalités)
-- [Installation](#installation)
-- [Configuration](#configuration)
+- [Installation Rapide](#installation-rapide)
 - [Utilisation](#utilisation)
 - [Architecture](#architecture)
-- [Contribuer](#contribuer)
 - [Licence](#licence)
 
 ## À propos
@@ -20,23 +17,21 @@ Hamx_smart est un système de trading automatisé utilisant l'intelligence artif
 - Exécuter des ordres automatiquement avec gestion des risques
 - Tracker les performances et générer des rapports
 
-## Fonctionnalités
+## ✨ Fonctionnalités
 
-✨ **Core Features**
-- 🔄 Connexion multi-exchange (Binance, Kraken, etc.)
-- 📊 Analyse technique avancée avec TA-Lib
+- 🤖 Robot trader intelligent
+- 📊 Analyse technique avancée
 - 🧠 Modèles ML pour prédiction de prix
-- ⚡ Exécution haute performance des ordres
-- 🛡️ Gestion des risques et stop-loss automatique
-- 📈 Dashboard de monitoring en temps réel
-- 💾 Logging complet et backtesting
+- ⚡ Exécution haute performance
+- 🛡️ Gestion des risques automatique
+- 📈 Monitoring en temps réel
+- 💾 Logging complet
 
-## Installation
+## 🚀 Installation Rapide
 
 ### Prérequis
 - Python 3.9+
-- pip ou conda
-- Compte d'exchange (Binance, Kraken, etc.)
+- pip
 
 ### Étapes
 
@@ -57,153 +52,74 @@ cp .env.example .env
 # Éditer .env avec vos credentials
 ```
 
-## Configuration
+## 📖 Utilisation
 
-### Variables d'environnement (.env)
+### Mode PAPIER (Simulation - Sans risque) ✅
 
-```env
-# Exchange Configuration
-EXCHANGE_NAME=binance
-API_KEY=your_api_key_here
-API_SECRET=your_api_secret_here
-
-# Trading Parameters
-BASE_CURRENCY=USDT
-TRADE_PAIR=BTC/USDT
-POSITION_SIZE=0.01
-
-# Risk Management
-STOP_LOSS_PERCENT=2.0
-TAKE_PROFIT_PERCENT=5.0
-MAX_TRADES=5
-
-# AI Model
-MODEL_PATH=./models/price_predictor.pkl
-PREDICTION_HORIZON=1h
-
-# Logging
-LOG_LEVEL=INFO
-LOG_FILE=./logs/hamx_smart.log
+```bash
+python main.py --mode=paper --pair=BTC/USDT
 ```
 
-## Utilisation
-
-### Démarrer le robot en mode simulation
+### Mode BACKTEST (Historique)
 
 ```bash
 python main.py --mode=backtest --pair=BTC/USDT --start-date=2024-01-01
 ```
 
-### Démarrer en mode trading réel (avec prudence)
+### Mode LIVE (Argent réel) ⚠️
 
 ```bash
 python main.py --mode=live --pair=BTC/USDT
 ```
 
-### Générer un rapport de performance
-
-```bash
-python scripts/generate_report.py --date-range=30d
-```
-
-## Architecture
+## 🏗️ Architecture
 
 ```
 Hamx_smart/
 ├── src/
-│   ├── core/
-│   │   ├── exchange.py        # Intégration exchanges
-│   │   ├── trader.py          # Logique de trading
-│   │   └── risk_manager.py    # Gestion des risques
-│   ├── ai/
-│   │   ├── predictor.py       # Modèles de prédiction
-│   │   ├── indicators.py      # Indicateurs techniques
-│   │   └── features.py        # Feature engineering
-│   ├── utils/
-│   │   ├── logger.py          # Logging centralisé
-│   │   ├── config.py          # Configuration
-│   │   └── helpers.py         # Utilitaires
-│   └── api/
-│       └── dashboard.py       # API du dashboard
-├── tests/
-│   ├── unit/                  # Tests unitaires
-│   ├── integration/           # Tests d'intégration
-│   └── fixtures/              # Données de test
-├── models/                    # Modèles ML pré-entraînés
-├── data/                      # Historique des données
-├── logs/                      # Fichiers de logs
-├── scripts/
-│   ├── backtest.py           # Script de backtesting
-│   ├── train_models.py       # Entraînement ML
-│   └── generate_report.py    # Génération de rapports
-├── config/
-��   ├── exchanges.yaml        # Config exchanges
-│   ├── strategies.yaml       # Config stratégies
-│   └── risk_profiles.yaml    # Profils de risque
-├── requirements.txt           # Dépendances Python
-├── main.py                    # Point d'entrée
-├── .env.example              # Template variables d'env
-└── README.md                 # Cette documentation
+│   ├── core/           # Cœur du trading
+│   │   ├── trader.py
+│   │   └── risk_manager.py
+│   ├── ai/             # Modèles IA
+│   │   └── predictor.py
+│   ├── api/            # Dashboard
+│   │   └── dashboard.py
+│   └── utils/          # Utilitaires
+│       ├── logger.py
+│       └── config.py
+├── tests/              # Tests
+├── main.py            # Point d'entrée
+├── requirements.txt   # Dépendances
+└── .env.example      # Template config
 ```
 
-### Flux de données
-
-```
-Market Data (Exchange API)
-    ↓
-Technical Indicators & Features
-    ↓
-AI Model Prediction
-    ↓
-Signal Generation
-    ↓
-Risk Manager (Validation)
-    ↓
-Order Execution (Trader)
-    ↓
-Monitoring & Logging
-```
-
-## Tests
+## 🧪 Tests
 
 ```bash
 # Tous les tests
 pytest
 
-# Tests unitaires seulement
-pytest tests/unit/
-
-# Tests avec couverture
-pytest --cov=src tests/
+# Avec couverture
+pytest --cov=src
 ```
 
-## Contribuer
-
-Les contributions sont bienvenues ! Pour contribuer :
-
-1. Fork le projet
-2. Créer une branche pour votre feature (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
-
-## Avertissements ⚠️
+## ⚠️ Avertissements
 
 - Le trading algorithmique comporte des risques significatifs
-- Commencez avec le mode backtest et simulation
+- Commencez avec le mode PAPER
 - Ne déployez pas d'argent réel sans tests approfondis
-- Respectez les conditions d'utilisation de votre exchange
 - Gardez vos API keys sécurisées
 
-## Licence
+## 📝 Licence
 
-Ce projet est sous licence [GPL-3.0](LICENSE) - voir le fichier LICENSE pour les détails.
+Ce projet est sous licence [GPL-3.0](LICENSE)
 
-## Contact & Support
+## 🆘 Support
 
-- 📧 Email: hamxsmart10-bit@example.com
-- 🐛 Issues: [Ouvrir une issue](https://github.com/hamxsmart10-bit/Hamx_smart/issues)
-- 💬 Discussions: [Rejoindre les discussions](https://github.com/hamxsmart10-bit/Hamx_smart/discussions)
+- 📖 [Guide d'Installation](INSTALLATION_GUIDE.md)
+- ⚡ [Démarrage Rapide](QUICKSTART.md)
+- 🚀 [Guide de Déploiement](DEPLOYMENT.md)
+- 🔄 [Guide de Release](RELEASE.md)
 
 ---
 

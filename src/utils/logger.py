@@ -1,18 +1,28 @@
-"""Configuration du logging centralisé"""
+"""Logging centralisé"""
 
 import logging
 import os
-from datetime import datetime
+from pathlib import Path
 
-def get_logger(name: str) -> logging.Logger:
-    """Obtenir un logger configuré"""
+
+def get_logger(name: str, level=logging.INFO) -> logging.Logger:
+    """
+    Obtenir un logger configuré
+    
+    Args:
+        name: Nom du logger
+        level: Niveau de log (par défaut INFO)
+        
+    Returns:
+        Logger configuré
+    """
     logger = logging.getLogger(name)
     
     # Ne pas reconfigurer si déjà fait
     if logger.handlers:
         return logger
     
-    logger.setLevel(logging.INFO)
+    logger.setLevel(level)
     
     # Format du log
     formatter = logging.Formatter(
@@ -26,8 +36,10 @@ def get_logger(name: str) -> logging.Logger:
     logger.addHandler(console_handler)
     
     # Handler fichier
-    os.makedirs('logs', exist_ok=True)
-    file_handler = logging.FileHandler('logs/hamx_smart.log')
+    log_dir = Path('logs')
+    log_dir.mkdir(exist_ok=True)
+    
+    file_handler = logging.FileHandler(log_dir / 'hamx_smart.log')
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
     
