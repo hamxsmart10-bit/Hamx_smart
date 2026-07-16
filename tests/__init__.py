@@ -1,1 +1,1 @@
-"""Tests pour Hamx_smart"""
+"""Tests du système"""

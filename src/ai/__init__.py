@@ -1,1 +1,1 @@
-"""Modules IA et machine learning"""
+"""Modèles d'IA et prédictions"""

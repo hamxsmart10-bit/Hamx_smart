@@ -1,1 +1,1 @@
-"""Core modules du robot trader"""
+"""Cœur du système de trading"""

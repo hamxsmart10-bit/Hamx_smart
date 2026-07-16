@@ -1,1 +1,1 @@
-"""Utilitaires et modules helper"""
+"""Utilitaires du système"""
